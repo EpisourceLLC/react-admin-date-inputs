@@ -13,6 +13,7 @@ const Picker = ({ PickerComponent, ...fieldProps }) => {
     resource,
     className,
     isRequired,
+    defaultValue,
     providerOptions,
   } = fieldProps;
 
@@ -39,7 +40,7 @@ const Picker = ({ PickerComponent, ...fieldProps }) => {
           error={!!(touched && error)}
           helperText={touched && error}
           className={className}
-          value={input.value ? new Date(input.value) : null}
+          value={input.value ? new Date(input.value) : defaultValue}
           onChange={date => handleChange(date)}
           onBlur={() => input.onBlur(input.value ? new Date(input.value).toISOString() : null)}
         />
@@ -51,6 +52,7 @@ const Picker = ({ PickerComponent, ...fieldProps }) => {
 Picker.propTypes = {
   input: PropTypes.object,
   isRequired: PropTypes.bool,
+  defaultValue: PropTypes.string, // ISO-8601 string
   label: PropTypes.string,
   meta: PropTypes.object,
   options: PropTypes.object,
@@ -67,6 +69,7 @@ Picker.propTypes = {
 Picker.defaultProps = {
   input: {},
   isRequired: false,
+  defaultValue: null,
   meta: { touched: false, error: false },
   options: {},
   resource: '',
