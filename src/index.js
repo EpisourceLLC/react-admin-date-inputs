@@ -7,6 +7,7 @@ import DateFnsUtils from '@date-io/date-fns';
 const Picker = ({ PickerComponent, ...fieldProps }) => {
 
   const {
+    margin,
     options,
     label,
     source,
@@ -14,6 +15,7 @@ const Picker = ({ PickerComponent, ...fieldProps }) => {
     className,
     isRequired,
     defaultValue,
+    inputVariant,
     providerOptions,
   } = fieldProps;
 
@@ -36,7 +38,8 @@ const Picker = ({ PickerComponent, ...fieldProps }) => {
             resource={resource}
             isRequired={isRequired}
           />}
-          margin="normal"
+          margin={margin}
+          inputVariant={inputVariant}
           error={!!(touched && error)}
           helperText={touched && error}
           className={className}
@@ -53,6 +56,8 @@ Picker.propTypes = {
   input: PropTypes.object,
   isRequired: PropTypes.bool,
   defaultValue: PropTypes.string, // ISO-8601 string
+  inputVariant: PropTypes.string,
+  margin: PropTypes.string,
   label: PropTypes.string,
   meta: PropTypes.object,
   options: PropTypes.object,
@@ -70,6 +75,8 @@ Picker.defaultProps = {
   input: {},
   isRequired: false,
   defaultValue: null,
+  inputVariant: 'filled',
+  margin: 'dense',
   meta: { touched: false, error: false },
   options: {},
   resource: '',
