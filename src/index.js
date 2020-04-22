@@ -174,9 +174,18 @@ const Picker = ({
             cancelLabel={translate('ra.action.cancel')}
             {...options}
             {...sanitizeRestProps(rest)}
-            value={input.value ? new Date(input.value) : defaultValue}
+            value={input.value 
+              ? new Date(input.value) 
+              : defaultValue 
+                ? new Date(defaultValue) 
+                : null}
             onChange={date => handleChange(date)}
-            onBlur={() => input.onBlur(input.value ? (stringFormat === 'ISO' ? new Date(input.value).toISOString() : new Date(input.value).toString()) : defaultValue)}
+            onBlur={() => input.onBlur(input.value 
+              ? (stringFormat === 'ISO' 
+                ? new Date(input.value).toISOString() 
+                : new Date(input.value).toString())
+              : null
+            )}
           />
       </MuiPickersUtilsProvider>
     );
