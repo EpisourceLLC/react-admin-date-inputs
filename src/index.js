@@ -14,6 +14,7 @@ const Picker = ({ PickerComponent, ...fieldProps }) => {
     resource,
     className,
     isRequired,
+    minutesStep,
     helperText,
     defaultValue,
     inputVariant,
@@ -44,6 +45,7 @@ const Picker = ({ PickerComponent, ...fieldProps }) => {
           error={!!(touched && error)}
           helperText={(touched && error) || helperText}
           className={className}
+          minutesStep={minutesStep}
           value={input.value ? new Date(input.value) : defaultValue}
           onChange={date => handleChange(date)}
           onBlur={() => input.onBlur(input.value ? new Date(input.value).toISOString() : null)}
@@ -56,6 +58,7 @@ const Picker = ({ PickerComponent, ...fieldProps }) => {
 Picker.propTypes = {
   input: PropTypes.object,
   isRequired: PropTypes.bool,
+  minutesStep: PropTypes.number,
   defaultValue: PropTypes.string, // ISO-8601 string
   helperText: PropTypes.string,
   inputVariant: PropTypes.string,
@@ -76,6 +79,7 @@ Picker.propTypes = {
 Picker.defaultProps = {
   input: {},
   isRequired: false,
+  minutesStep: 1,
   defaultValue: null,
   helperText: null,
   inputVariant: 'filled',
