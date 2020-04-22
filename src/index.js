@@ -14,6 +14,7 @@ const Picker = ({ PickerComponent, ...fieldProps }) => {
     resource,
     className,
     isRequired,
+    helperText,
     defaultValue,
     inputVariant,
     providerOptions,
@@ -41,7 +42,7 @@ const Picker = ({ PickerComponent, ...fieldProps }) => {
           margin={margin}
           inputVariant={inputVariant}
           error={!!(touched && error)}
-          helperText={touched && error}
+          helperText={(touched && error) || helperText}
           className={className}
           value={input.value ? new Date(input.value) : defaultValue}
           onChange={date => handleChange(date)}
@@ -56,6 +57,7 @@ Picker.propTypes = {
   input: PropTypes.object,
   isRequired: PropTypes.bool,
   defaultValue: PropTypes.string, // ISO-8601 string
+  helperText: PropTypes.string,
   inputVariant: PropTypes.string,
   margin: PropTypes.string,
   label: PropTypes.string,
@@ -75,6 +77,7 @@ Picker.defaultProps = {
   input: {},
   isRequired: false,
   defaultValue: null,
+  helperText: null,
   inputVariant: 'filled',
   margin: 'dense',
   meta: { touched: false, error: false },
