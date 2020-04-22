@@ -174,7 +174,7 @@ const Picker = ({
             cancelLabel={translate('ra.action.cancel')}
             {...options}
             {...sanitizeRestProps(rest)}
-            value={input.value ? new Date(input.value) : null}
+            value={input.value ? new Date(input.value) : defaultValue}
             onChange={date => handleChange(date)}
             onBlur={() => input.onBlur(input.value ? (stringFormat === 'ISO' ? new Date(input.value).toISOString() : new Date(input.value).toString()) : null)}
           />
