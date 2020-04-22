@@ -176,7 +176,7 @@ const Picker = ({
             {...sanitizeRestProps(rest)}
             value={input.value ? new Date(input.value) : defaultValue}
             onChange={date => handleChange(date)}
-            onBlur={() => input.onBlur(input.value ? (stringFormat === 'ISO' ? new Date(input.value).toISOString() : new Date(input.value).toString()) : null)}
+            onBlur={() => input.onBlur(input.value ? (stringFormat === 'ISO' ? new Date(input.value).toISOString() : new Date(input.value).toString()) : defaultValue)}
           />
       </MuiPickersUtilsProvider>
     );
